@@ -1,0 +1,33 @@
+[package]
+name = "rust_sm"
+version = "0.1.0"
+authors = ["wangmarkqi <wangalexqi@126.com>"]
+edition = "2018"
+description = "A rust implementation for sm."
+license = "MIT"
+homepage = "https://github.com/wangmarkqi/rust_sm.git"
+repository = "https://github.com/wangmarkqi/rust_sm.git"
+documentation = "https://github.com/wangmarkqi/rust_sm.git"
+
+#cargo package
+#cargo publish
+include = [
+    "**/*.lib",
+    "**/*.dll",
+    "**/*.rs",
+    "**/*.c",
+    "**/*.h",
+    "**/*.so",
+    "Cargo.toml",
+]
+[lib]
+name = "rust_sm"
+path = "src/lib.rs"
+[[bin]]
+name = "rust_sm"
+path = "src/bin.rs"
+
+
+[dependencies]
+libloading="0.6.3"
+anyhow="1.0.32"
