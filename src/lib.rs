@@ -73,3 +73,8 @@ pub fn Sm4Dec(k: &str, msg: &str) -> anyhow::Result<String> {
     let c = clib::sm4::Sm4Dec(k, msg);
     c
 }
+///Hi for test
+pub fn Hi() -> anyhow::Result<()> {
+    let b = clib::tools::Hi();
+   Ok(())
+}

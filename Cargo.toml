@@ -8,6 +8,7 @@ license = "MIT"
 homepage = "https://github.com/wangmarkqi/rust_sm.git"
 repository = "https://github.com/wangmarkqi/rust_sm.git"
 documentation = "https://github.com/wangmarkqi/rust_sm.git"
+links="gosm"
 
 #cargo package
 #cargo publish
