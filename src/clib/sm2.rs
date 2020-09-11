@@ -1,4 +1,3 @@
-use super::gosm::GoString;
 use super::tools::*;
 use std::ffi::CStr;
 use std::ffi::CString;

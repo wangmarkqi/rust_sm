@@ -1,3 +1,8 @@
+#![allow(non_snake_case)]
+#[allow(dead_code)]
+#[warn(unused_imports)]
+#[warn(unused_variables)]
+#[warn(unused_must_use)]
 pub mod clib;
 
 /// 生成国密sm2密钥对，运行目录下私钥sk.pem,公钥pk.pem
