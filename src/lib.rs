@@ -1,6 +1,10 @@
 pub mod clib;
 
 /// 生成国密sm2密钥对，运行目录下私钥sk.pem,公钥pk.pem
+/// # Examples
+/// ```
+/// GenKeyPair();
+/// ```
 pub fn GenKeyPair() -> anyhow::Result<String> {
     let b = clib::sm2::GenKeyPair();
     b

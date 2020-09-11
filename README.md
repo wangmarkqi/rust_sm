@@ -1,12 +1,12 @@
 # rust_sm rust的国密实现 
 
-##注意：调用动态链接，仅在linux系统经过测试 
+## 注意：调用动态链接，仅在linux系统经过测试 
 
-生成国密sm2密钥对，运行目录下私钥sk.pem,公钥pk.pem
-pub fn GenKeyPair() -> anyhow::Result<String> {
-   let b = clib::sm2::GenKeyPair();
-    b
-}
+## 生成国密sm2密钥对，运行目录下私钥sk.pem,公钥pk.pem
+ ```
+ GenKeyPair();
+ ```
+
 ## sm2 加密 解密
  Examples
 ```
