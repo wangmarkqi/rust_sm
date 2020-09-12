@@ -1,12 +1,14 @@
 pub fn load_dynamic() -> String {
     #[cfg(target_os = "windows")]
     {
-        String::from("./gosm/libgosm.dll")
+        // String::from("./gosm/libgosm.dll")
+        String::from("libgosm.dll")
     }
 
     #[cfg(target_os = "linux")]
     {
-        String::from("./gosm/libgosm.so")
+        // String::from("./gosm/libgosm.so")
+        String::from("libgosm.so")
     }
 }
 

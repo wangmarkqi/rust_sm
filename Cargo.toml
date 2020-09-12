@@ -1,6 +1,6 @@
 [package]
 name = "rust_sm"
-version = "0.1.1"
+version = "0.1.3"
 authors = ["wangmarkqi <wangalexqi@126.com>"]
 edition = "2018"
 description = "A rust implementation for sm."
@@ -8,8 +8,7 @@ license = "MIT"
 homepage = "https://github.com/wangmarkqi/rust_sm.git"
 repository = "https://github.com/wangmarkqi/rust_sm.git"
 documentation = "https://github.com/wangmarkqi/rust_sm.git"
-links="gosm"
-
+build = "build.rs"
 #cargo package
 #cargo publish
 include = [

@@ -3,10 +3,11 @@ use std::fs;
 use std::path::Path;
 
 fn main() {
-    
+
     // Get the output path
     let out_dir = env::var("OUT_DIR").unwrap();
     println!("**************outdir={:?}", out_dir);
+    println!("cargo:warning=MESSAGE");
 
     // Copy *.dll & .lib to the output path
     let so: String = String::from("./gosm/libgosm.so");
