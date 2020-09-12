@@ -30,4 +30,4 @@ path = "src/bin.rs"
 
 [dependencies]
 libloading="0.6.3"
-anyhow="1.0.32"
+anyhow="1.0"
