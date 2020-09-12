@@ -6,7 +6,7 @@ fn main() {
 
     // Get the output path
     let out_dir = env::var("OUT_DIR").unwrap();
-    println!("**************outdir={:?}", out_dir);
+    println!("cargo:warning=outdir={:?}", out_dir);
     println!("cargo:warning=MESSAGE");
 
     // Copy *.dll & .lib to the output path
