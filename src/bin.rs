@@ -10,8 +10,8 @@ fn main() {
 }
 fn test() -> anyhow::Result<()> {
     clib::tools::Hi()?;
-    // let b = clib::sm2::GenKeyPair()?;
-    // dbg!(b);
+    let b = clib::sm2::GenKeyPair()?;
+    dbg!(b);
     // let msg = "adsfads";
     // let a = clib::sm3::Sm3(msg)?;
     // dbg!(a);
