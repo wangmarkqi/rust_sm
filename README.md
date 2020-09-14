@@ -1,7 +1,7 @@
 # rust_sm rust的国密实现 
 
 ## 注意：调用动态链接(源代码目录下so和dll文件)，仅在linux系统经过测试。运行时build.rs自动根据操作系统将动态链接 拷贝到OUT_DIR。
-
+## 文档：https://docs.rs/rust_sm/0.1.3/rust_sm/
 ## 生成国密sm2密钥对，运行目录下私钥sk.pem,公钥pk.pem
  ```
  GenKeyPair();

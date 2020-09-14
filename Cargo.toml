@@ -7,7 +7,7 @@ description = "A rust implementation for sm."
 license = "MIT"
 homepage = "https://github.com/wangmarkqi/rust_sm.git"
 repository = "https://github.com/wangmarkqi/rust_sm.git"
-documentation = "https://github.com/wangmarkqi/rust_sm.git"
+documentation = "https://docs.rs/rust_sm/0.1.3/rust_sm/"
 build = "build.rs"
 #cargo package
 #cargo publish
