@@ -1,11 +1,11 @@
-use super::tools::*;
+use super::tools::LIB;
 use std::ffi::CStr;
 use std::ffi::CString;
 use std::os::raw::c_char;
+use std::sync::Arc;
 pub fn GenKeyPair() -> anyhow::Result<String> {
-    let file = load_dynamic();
-    dbg!(&file);
-    let lib = libloading::Library::new(file)?;
+    let mylib = Arc::clone(&LIB);
+    let lib = mylib.lock().unwrap();
     unsafe {
         let gen: libloading::Symbol<unsafe extern "C" fn() -> *mut c_char> =
             lib.get(b"GenKeyPair")?;
@@ -19,8 +19,8 @@ pub fn Sm2Enc(pkpath: &str, message: &str) -> anyhow::Result<String> {
     let pk_c_str = CString::new(pkpath)?;
     let msg_c_str = CString::new(message)?;
 
-    let file = load_dynamic();
-    let lib = libloading::Library::new(file)?;
+    let mylib = Arc::clone(&LIB);
+    let lib = mylib.lock().unwrap();
     unsafe {
         let sm2enc: libloading::Symbol<
             unsafe extern "C" fn(pk: *const c_char, msg: *const c_char) -> *mut c_char,
@@ -35,8 +35,8 @@ pub fn Sm2Dec(skpath: &str, message: &str) -> anyhow::Result<String> {
     let sk_c_str = CString::new(skpath)?;
     let msg_c_str = CString::new(message)?;
 
-    let file = load_dynamic();
-    let lib = libloading::Library::new(file)?;
+    let mylib = Arc::clone(&LIB);
+    let lib = mylib.lock().unwrap();
     unsafe {
         let sm2dec: libloading::Symbol<
             unsafe extern "C" fn(sk: *const c_char, msg: *const c_char) -> *mut c_char,
@@ -51,8 +51,8 @@ pub fn Sm2Sign(skpath: &str, message: &str) -> anyhow::Result<String> {
     let sk_c_str = CString::new(skpath)?;
     let msg_c_str = CString::new(message)?;
 
-    let file = load_dynamic();
-    let lib = libloading::Library::new(file)?;
+    let mylib = Arc::clone(&LIB);
+    let lib = mylib.lock().unwrap();
     unsafe {
         let sm2sign: libloading::Symbol<
             unsafe extern "C" fn(sk: *const c_char, msg: *const c_char) -> *mut c_char,
@@ -67,9 +67,8 @@ pub fn Sm2Verify(pkpath: &str, message: &str, sign: &str) -> anyhow::Result<Stri
     let sk_c_str = CString::new(pkpath)?;
     let msg_c_str = CString::new(message)?;
     let sign_c_str = CString::new(sign)?;
-
-    let file = load_dynamic();
-    let lib = libloading::Library::new(file)?;
+    let mylib = Arc::clone(&LIB);
+    let lib = mylib.lock().unwrap();
     unsafe {
         let sm2ver: libloading::Symbol<
             unsafe extern "C" fn(

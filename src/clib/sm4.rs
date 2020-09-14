@@ -1,14 +1,14 @@
-use super::tools::*;
+use super::tools::LIB;
 use std::ffi::CStr;
 use std::ffi::CString;
 use std::os::raw::c_char;
-
+use std::sync::Arc;
 pub fn Sm4Enc(key: &str, msg: &str) -> anyhow::Result<String> {
     let k_c_str = CString::new(key)?;
     let msg_c_str = CString::new(msg)?;
 
-    let file = load_dynamic();
-    let lib = libloading::Library::new(file)?;
+    let mylib = Arc::clone(&LIB);
+    let lib = mylib.lock().unwrap();
     unsafe {
         let sm4enc: libloading::Symbol<
             unsafe extern "C" fn(k: *const c_char, msg: *const c_char) -> *mut c_char,
@@ -22,8 +22,8 @@ pub fn Sm4Dec(key: &str, msg: &str) -> anyhow::Result<String> {
     let k_c_str = CString::new(key)?;
     let msg_c_str = CString::new(msg)?;
 
-    let file = load_dynamic();
-    let lib = libloading::Library::new(file)?;
+    let mylib = Arc::clone(&LIB);
+    let lib = mylib.lock().unwrap();
     unsafe {
         let sm4dec: libloading::Symbol<
             unsafe extern "C" fn(k: *const c_char, msg: *const c_char) -> *mut c_char,

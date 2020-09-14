@@ -1,6 +1,6 @@
 [package]
 name = "rust_sm"
-version = "0.1.3"
+version = "0.1.4"
 authors = ["wangmarkqi <wangalexqi@126.com>"]
 edition = "2018"
 description = "A rust implementation for sm."
@@ -31,3 +31,4 @@ path = "src/bin.rs"
 [dependencies]
 libloading="0.6.3"
 anyhow="1.0"
+once_cell = "1.4.0"

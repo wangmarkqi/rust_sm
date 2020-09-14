@@ -9,9 +9,9 @@ fn main() {
     test();
 }
 fn test() -> anyhow::Result<()> {
-    clib::tools::Hi()?;
-    let b = clib::sm2::GenKeyPair()?;
-    dbg!(b);
+    // clib::tools::Hi()?;
+    // let b = clib::sm2::GenKeyPair()?;
+    // dbg!(b);
     // let msg = "adsfads";
     // let a = clib::sm3::Sm3(msg)?;
     // dbg!(a);
@@ -24,5 +24,7 @@ fn test() -> anyhow::Result<()> {
     // let k = "1234567890abcdef";
     // let h = clib::sm4::Sm4Enc(k, "asdfa")?;
     // dbg!(&h);
+    // let i = clib::sm4::Sm4Dec(k, &h)?;
+    // dbg!(&i);
     Ok(())
 }
