@@ -2,7 +2,7 @@
 
 ## 注意：
 - 调用动态链接(源代码目录下so和dll文件)，运行时build.rs自动根据操作系统将动态链接 拷贝到OUT_DIR。
-- 所有代码在linux系统经过测试。win10下，需要使用gnu rust，此外GenKeyPair无法正常使用，可以在linux下把生成的pem文件拷贝到win下，使用其他api.
+- 所有代码在linux系统经过测试。
 - 文档：https://docs.rs/rust_sm/0.1.3/rust_sm/
 ## 生成国密sm2密钥对，运行目录下私钥sk.pem,公钥pk.pem
  ```
