@@ -3,22 +3,38 @@ use std::fs;
 use std::path::Path;
 
 fn main() {
-    // Get the output path
-    // let dir = env::var("CARGO_MANIFEST_DIR").unwrap();
     let dir = env::var("OUT_DIR").unwrap();
-    println!("cargo:warning=MESSAGE");
     println!("cargo:warning=dir={:?}", &dir);
     println!("cargo:rustc-env={}={}", "OUT_DIR", &dir);
-    // Copy *.dll & .lib to the output path
-    let so: String = String::from("./gosm/libgosm.so");
-    let dll: String = String::from("./gosm/libgosm.dll");
-    let dll_dest_path = Path::new(&dir).join("libgosm.dll");
-    let so_dest_path = Path::new(&dir).join("libgosm.so");
-    let _so_result = fs::copy(so, so_dest_path);
-    let _dll_result = fs::copy(dll, dll_dest_path);
 
-    // Link Dynamsoft Barcode Reader.
-    // println!("cargo:rustc-link-search={}", env!("DBR_LIB"));
-    println!("cargo:rustc-link-search=all={}", &dir);
-    println!("cargo:rustc-link-lib=dylib=gosm");
+    copy_dynamic(&dir);
+}
+
+#[cfg(target_os = "windows")]
+fn copy_dynamic(out: &str) {
+    let src: String = String::from("./gosm/libgosm.dll");
+    let dest = Path::new(out).join("libgosm.dll");
+    fs::copy(src, dest);
+}
+
+#[cfg(target_os = "linux")]
+fn copy_dynamic(out: &str) {
+    let src: String = String::from("./gosm/libgosm.so");
+    let dest = Path::new(out).join("libgosm.so");
+    fs::copy(src, dest);
+}
+
+#[cfg(target_os = "linux")]
+fn link_static() {
+    let root = env::var("CARGO_MANIFEST_DIR").unwrap();
+    let go_dir = Path::new(&root).join("gosm");
+    let lib_dir = dunce::canonicalize(go_dir)
+        .unwrap()
+        .to_str()
+        .unwrap()
+        .to_owned();
+    println!("cargo:rustc-link-search=native={}", &lib_dir);
+    println!("cargo:warning=MESSAGE**********{}", &lib_dir);
+    let lib_name = "sm";
+    println!("cargo:rustc-link-lib=static={}", lib_name);
 }

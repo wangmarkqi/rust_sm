@@ -1,11 +1,10 @@
 go compile linux static lib
 
 
-env CGO_ENABLED=1 go build -buildmode=c-archive -o libgo_sm.a
-
+env CGO_ENABLED=1 go build -buildmode=c-archive -o libsm.a
+env CGO_ENABLED=1 go build -ldflags=-extldflags -buildmode=c-archive -o libsmwin.lib
 
 env CGO_ENABLED=1 go build -buildmode=c-shared -o libgosm.so
-
 env CGO_ENABLED=1 go build -buildmode=c-shared -o libgosm.dll
 
 
