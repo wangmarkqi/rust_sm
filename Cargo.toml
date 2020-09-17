@@ -1,6 +1,6 @@
 [package]
 name = "rust_sm"
-version = "0.1.6"
+version = "0.1.7"
 authors = ["wangmarkqi <wangalexqi@126.com>"]
 edition = "2018"
 description = "A rust implementation for sm."
@@ -12,12 +12,9 @@ build = "build.rs"
 #cargo package
 #cargo publish
 include = [
-    "**/*.lib",
     "**/*.dll",
+    "**/*.a",
     "**/*.rs",
-    "**/*.c",
-    "**/*.h",
-    "**/*.so",
     "Cargo.toml",
 ]
 [lib]

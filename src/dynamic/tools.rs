@@ -9,24 +9,15 @@ pub static LIB: Lazy<Arc<Mutex<libloading::Library>>> = Lazy::new(|| {
 });
 
 pub fn load_dynamic() -> String {
-    let dir1 = std::env::var("OUT_DIR");
-    if let Err(e) = dir1 {
-        panic!("can not find out dir")
-    }
-    let dir = dir1.unwrap();
-    dbg!(&dir);
-    #[cfg(target_os = "windows")]
-    {
-        let f = format!("{}/libgosm.dll", &dir);
-        // String::from("libgosm.dll")
-        f
-    }
+    let dir = env!("OUT_DIR");
 
-    #[cfg(target_os = "linux")]
-    {
-        let f = format!("{}/libgosm.so", &dir);
-        f
+    dbg!(dir);
+    let f = format!("{}/libgosm.dll", &dir);
+    let p = std::path::Path::new(&f);
+    if !p.exists() {
+        panic!("can not find out dynamic dll")
     }
+    f
 }
 
 pub fn Hi() -> anyhow::Result<()> {

@@ -9,8 +9,8 @@ fn main() {
 #[cfg(target_os = "windows")]
 fn copy_or_link() {
     let out = env::var("OUT_DIR").unwrap();
-    println!("cargo:warning=dir={:?}", &out);
-    println!("cargo:rustc-env={}={}", "OUT_DIR", &out);
+    // println!("cargo:rustc-env={}={}", "OUT_DIR", &out);
+    println!("cargo:warning=MESSAGE**********{}", &out);
 
     let src: String = String::from("./gosm/libgosm.dll");
     let dest = Path::new(&out).join("libgosm.dll");
